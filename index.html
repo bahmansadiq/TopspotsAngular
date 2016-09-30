@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>San Diego Top Spots</title>
+		<meta charset="utf-8" name="BahmanSadiq" >
+		<!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"      									 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link type="text/css" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body >
+<div class ="main" ng-controller="MainController">
+<div class="container table-responsive">
+	<h1> San Diego Top Spots in Angular</h1>
+	<legend>  </legend>
+	<p>There are some great places to see in downtown San Diego. In this project you'll get to know a few of them by turning the provided JSON file into a table in HTML with links to Google Maps using Angular.</p>
+	 <div class="form-group">
+	 	<div id="map" class="col-md-12" style="height: 400px"></div>
+	<table class="table text-left" ng-model="name">
+	  <tr>
+	  	<div class="col-md-2 ">
+	    <th>Name</th>
+	    </div>
+
+	    <div class="col-md-8">
+	    <th>Description</th> 
+	    </div>
+	    <div class="col-md-2">
+	    <th>Link</th>
+	    </div>
+	  </tr>
+
+
+	  <tr ng-repeat="data in place">
+	  						  	<div class="col-md-2 ">
+							    	<td >{{data.name}}</td>
+							    </div>
+
+							    <div class="col-md-8">
+							  	 	 <td>{{data.description}}</td> 
+							    </div>
+							    <div class="col-md-2">
+							  		  <td><a href="https://www.google.com/maps?q={{data.location[0]}}, {{data.location[1]}}"> <button class="btn btn-primary">Open in Google Maps</button></a></td>
+							    </div>
+	  </tr>
+	</table>
+
+	</div>
+</div>
+</div>
+	<script>
+		 var map;
+		 function initMap() {
+		      map = new google.maps.Map(document.getElementById('map'), {
+		      center: {lat: 32.70922, lng: -117.17007},
+		      zoom: 12
+		       });
+		     }
+   	</script>
+	<script type="text/javascript" src="index.js"></script>
+	
+	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZOpkZdWFA1PGIHHwdUY5mjp5cJF68zG8&callback=initMap"
+    async defer></script>
+</body>
+</html>
