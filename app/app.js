@@ -6,9 +6,12 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
 
     var map;
 
-
-     $http.get('topspots.json').then(function(spots) {          
-     $scope.place= spots.data.topspots;
+       $http({
+                method: 'GET',
+                url: 'http://localhost:50629/api/TopSpots'
+            }).then(function(spots) {          
+     $scope.place= spots.data;
+    // console.log(place);
      $scope.submitButton=function(){
      $scope.place.push({
     'name': $scope.addName,
